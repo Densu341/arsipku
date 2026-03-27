@@ -88,7 +88,7 @@ class User extends CI_Controller
                     $new_image = $this->upload->data('file_name');
                     $this->db->set('image', $new_image);
                 } else {
-                    $this->session->set_flashdata('msg', 'Update Gagal');
+                    $this->session->set_flashdata('msg', $this->upload->display_errors('', ''));
                     redirect('user/edit_profile');
                 }
             }
@@ -119,16 +119,23 @@ class User extends CI_Controller
         } else {
             $current_password = $this->input->post('current_password');
             $new_password = $this->input->post('new_password1');
-            if ($current_password == $new_password) {
-                $this->session->set_flashdata('msg', 'Password baru tidak boleh sama dengan password lama');
+            $data['user'] = $this->db->get_where('mst_user', ['username' => $this->session->userdata('username')])->row_array();
+
+            if (!password_verify($current_password, $data['user']['password'])) {
+                $this->session->set_flashdata('msg', 'Password lama salah!');
                 redirect('user/edit_profile');
             } else {
-                $password_hash = password_hash($new_password, PASSWORD_DEFAULT);
-                $this->db->set('password', $password_hash);
-                $this->db->where('username', $this->session->userdata('username'));
-                $this->db->update('mst_user');
-                $this->session->set_flashdata('message', 'Ubah password');
-                redirect('user/edit_profile');
+                if ($current_password == $new_password) {
+                    $this->session->set_flashdata('msg', 'Password baru tidak boleh sama dengan password lama');
+                    redirect('user/edit_profile');
+                } else {
+                    $password_hash = password_hash($new_password, PASSWORD_DEFAULT);
+                    $this->db->set('password', $password_hash);
+                    $this->db->where('username', $this->session->userdata('username'));
+                    $this->db->update('mst_user');
+                    $this->session->set_flashdata('message', 'Ubah password');
+                    redirect('user/edit_profile');
+                }
             }
         }
     }

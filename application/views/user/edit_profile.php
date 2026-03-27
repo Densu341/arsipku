@@ -8,7 +8,12 @@
     <!-- Main content -->
     <section class="content">
         <div class="flash-data" data-flashdata="<?= $this->session->flashdata('message'); ?>"></div>
-        <div class="flash-data-error" data-flashdata-error="<?= $this->session->flashdata('msg'); ?>"></div>
+        <?php if ($this->session->flashdata('msg')) : ?>
+            <div class="alert alert-danger" role="alert">
+                <a class="close" data-dismiss="alert">x</a>
+                <?php echo $this->session->flashdata('msg'); ?>
+            </div>
+        <?php endif; ?>
         <?php if (validation_errors()) { ?>
             <div class="alert alert-danger">
                 <a class="close" data-dismiss="alert">x</a>

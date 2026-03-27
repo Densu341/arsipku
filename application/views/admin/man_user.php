@@ -173,40 +173,45 @@
    </div>
 
    <script>
-       $('.tombol-delete').on('click', function(e) {
-           e.preventDefault();
-           const href = $(this).attr('href');
-           Swal.fire({
-               title: 'Yakin untuk menghapus ?',
-               text: 'Data User akan dihapus',
-               type: 'warning',
-               showCancelButton: true,
-               confirmButtonColor: '#3085d6',
-               cancelButtonColor: '#d33',
-               confirmButtonText: 'Hapus'
-           }).then((result) => {
-               if (result.value) {
-                   document.location.href = href;
-               }
-           })
-       });
-   </script>
+       document.addEventListener("DOMContentLoaded", function() {
+           $('body').on('click', '.tombol-delete', function(e) {
+               e.preventDefault();
+               const href = $(this).attr('href');
+               Swal.fire({
+                   title: 'Yakin untuk menghapus ?',
+                   text: 'Data User akan dihapus',
+                   type: 'warning',
+                   showCancelButton: true,
+                   confirmButtonColor: '#3085d6',
+                   cancelButtonColor: '#d33',
+                   confirmButtonText: 'Hapus'
+               }).then((result) => {
+                   if (result.value) {
+                       document.location.href = href;
+                   }
+               })
+           });
 
-   <script>
-       $('.tombol-edit').on('click', function() {
-           const id = $(this).data('id');
-           $.ajax({
-               url: '<?php echo base_url('admin/get_edit'); ?>',
-               data: {
-                   id: id
-               },
-               method: 'post',
-               dataType: 'json',
-               success: function(data) {
-                   $('#namajson').val(data.nama);
-                   $('#rolejson').val(data.role_id);
-                   $('#idjson').val(data.id);
-               }
+           $('body').on('click', '.tombol-edit', function() {
+               const id = $(this).data('id');
+               $.ajax({
+                   url: '<?php echo base_url('admin/get_edit'); ?>',
+                   data: {
+                       id: id
+                   },
+                   method: 'post',
+                   dataType: 'json',
+                   success: function(data) {
+                       $('#namajson').val(data.nama);
+                       $('#rolejson').val(data.role_id);
+                       $('#idjson').val(data.id);
+                       if (data.is_active == 1) {
+                           $('#optionsRadios1').prop('checked', true);
+                       } else {
+                           $('#optionsRadios2').prop('checked', true);
+                       }
+                   }
+               });
            });
        });
    </script>

@@ -21,7 +21,6 @@
 
 <body>
     <div class="flash-data" data-flashdata="<?= $this->session->flashdata('message'); ?>"></div>
-    <div class="flash-data-error" data-flashdata-error="<?= $this->session->flashdata('msg'); ?>"></div>
     <div class="container">
         <div id="loginbox" style="margin-top:20%;" class="mainbox col-md-4 col-md-offset-4 col-sm- col-sm-offset-2">
             <div class="panel panel-primary">
@@ -30,6 +29,11 @@
                 </div>
                 <div style="padding-top:15px" class="panel-body">
                     <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                    <?php if ($this->session->flashdata('msg')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo $this->session->flashdata('msg'); ?>
+                        </div>
+                    <?php endif; ?>
                     <form action="<?php echo base_url('auth'); ?>" method="post">
                         <div style="margin-top: 15px" class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                             <input id="login-username" type="text" class="form-control" name="username" value="<?php echo set_value('username'); ?>" placeholder="username"></div>

@@ -68,8 +68,8 @@ class Admin extends CI_Controller
                     $new_image = $this->upload->data('file_name');
                     $this->db->set('image', $new_image);
                 } else {
-                    $this->session->set_flashdata('msg', 'Update Gagal');
-                    redirect('user/edit_profile');
+                    $this->session->set_flashdata('msg', $this->upload->display_errors('', ''));
+                    redirect('admin/profile');
                 }
             }
             $id = $this->input->post('id');
@@ -102,16 +102,23 @@ class Admin extends CI_Controller
         } else {
             $current_password = $this->input->post('current_password');
             $new_password = $this->input->post('new_password1');
-            if ($current_password == $new_password) {
-                $this->session->set_flashdata('msg', 'Password baru tidak boleh sama dengan password lama');
+            $data['user'] = $this->db->get_where('mst_user', ['username' => $this->session->userdata('username')])->row_array();
+
+            if (!password_verify($current_password, $data['user']['password'])) {
+                $this->session->set_flashdata('msg', 'Password lama salah!');
                 redirect('admin/profile');
             } else {
-                $password_hash = password_hash($new_password, PASSWORD_DEFAULT);
-                $this->db->set('password', $password_hash);
-                $this->db->where('username', $this->session->userdata('username'));
-                $this->db->update('mst_user');
-                $this->session->set_flashdata('message', 'Ubah password');
-                redirect('admin/profile');
+                if ($current_password == $new_password) {
+                    $this->session->set_flashdata('msg', 'Password baru tidak boleh sama dengan password lama');
+                    redirect('admin/profile');
+                } else {
+                    $password_hash = password_hash($new_password, PASSWORD_DEFAULT);
+                    $this->db->set('password', $password_hash);
+                    $this->db->where('username', $this->session->userdata('username'));
+                    $this->db->update('mst_user');
+                    $this->session->set_flashdata('message', 'Ubah password');
+                    redirect('admin/profile');
+                }
             }
         }
     }
@@ -162,9 +169,11 @@ class Admin extends CI_Controller
         $id = $this->input->post('id');
         $is_active = $this->input->post('is_active');
         $role_id = $this->input->post('role_id');
+        $nama = $this->input->post('nama');
 
         $this->db->set('is_active', $is_active);
         $this->db->set('role_id', $role_id);
+        $this->db->set('nama', $nama);
         $this->db->where('id', $id);
         $this->db->update('mst_user');
         $this->session->set_flashdata('message', 'Update user');
