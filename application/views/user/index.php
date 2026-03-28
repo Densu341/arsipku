@@ -37,7 +37,7 @@
               <div class="progress-bar" style="width: 100%"></div>
             </div>
             <span class="progress-description">
-              <a href="<?php echo base_url('user/lap_harian'); ?>"> More info</a>
+              <a href="<?php echo base_url('user/lap_bulanan'); ?>"> More info</a>
             </span>
           </div><!-- /.info-box-content -->
         </div><!-- /.info-box -->

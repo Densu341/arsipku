@@ -54,7 +54,12 @@
                                        <?php endif; ?>
                                        <td><?php echo format_indo($lu['date_created']); ?></td>
                                        <td> <button type="button" class="tombol-edit btn btn-info btn-block btn-xs" data-id="<?php echo $lu['id']; ?>" data-toggle="modal" data-target="#edit-user">Edit</button></td>
-                                       <td><a href="<?php echo base_url('admin/del_user/') . $lu['id']; ?>" class="tombol-delete btn btn-danger btn-block btn-xs">Delete</a>
+                                       <td>
+                                           <?php if ($lu['username'] === 'admin' && $lu['role_id'] == 1): ?>
+                                               <button class="btn btn-danger btn-block btn-xs" disabled>Delete</button>
+                                           <?php else: ?>
+                                               <a href="<?php echo base_url('admin/del_user/') . $lu['id']; ?>" class="tombol-delete btn btn-danger btn-block btn-xs">Delete</a>
+                                           <?php endif; ?>
                                        </td>
                                    </tr>
                                <?php endforeach; ?>
@@ -138,6 +143,15 @@
                                    <option value="1">ADMINISTRATOR</option>
                                    <option value="2">USER</option>
                                </select>
+                               <script>
+                                   // Disable role select if editing admin (after AJAX loads data)
+                                   $(document).ready(function() {
+                                       $('body').on('click', '.tombol-edit', function() {
+                                           // The AJAX call is triggered here, so we hook into its success below
+                                           // The actual disabling logic is now inside the AJAX success callback
+                                       });
+                                   });
+                               </script>
                            </div>
                            <div class="form-group">
                                <label for="nama">Nama Lengkap</label>
@@ -209,6 +223,16 @@
                            $('#optionsRadios1').prop('checked', true);
                        } else {
                            $('#optionsRadios2').prop('checked', true);
+                       }
+                       // Disable role select if username is 'admin' and role_id is 1
+                       // reset dulu biar tidak ke-lock dari klik sebelumnya
+                       $('#rolejson').prop('disabled', false);
+
+                       // 🔥 kondisi utama
+                       if (data.username === 'admin') {
+                           $('#rolejson').prop('disabled', true);
+                       } else {
+                           $('#rolejson').prop('disabled', false);
                        }
                    }
                });
