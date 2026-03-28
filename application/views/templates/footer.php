@@ -22,7 +22,7 @@
 <script src="<?php echo base_url('assets/'); ?>dist/js/demo.js"></script>
 <!-- Sweet alert -->
 <script src="<?= base_url('assets/swal/'); ?>sweetalert2.all.min.js"></script>
-<script src="<?= base_url('assets/swal/'); ?>myscript.js"></script>
+<script src="<?= base_url('assets/swal/'); ?>myscript.js?v=<?= time(); ?>"></script>
 
 <script>
     $(document).ready(function() {
@@ -46,7 +46,7 @@
         Swal.fire({
             title: 'Konfirmasi Logout',
             text: 'Klik logout untuk mengakhiri session',
-            type: 'danger',
+            type: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',

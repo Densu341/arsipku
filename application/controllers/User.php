@@ -81,7 +81,8 @@ class User extends CI_Controller
                 $config['upload_path'] = './assets/img/profile';
                 $this->load->library('upload', $config);
                 if ($this->upload->do_upload('image')) {
-                    $old_image = $data['id']['image'];
+                    $user = $this->db->get_where('mst_user', ['username' => $this->session->userdata('username')])->row_array();
+                    $old_image = $user['image'];
                     if ($old_image != 'default.jpg') {
                         unlink(FCPATH . 'assets/img/profile/' . $old_image);
                     }
@@ -158,14 +159,10 @@ class User extends CI_Controller
             $upload_file = $_FILES['file']['name'];
             if ($upload_file) {
                 $config['allowed_types'] = 'xls|xlsx|doc|docx|ppt|pptx|pdf|zip|rar|txt';
-                $config['max_size']     = '51200';
+                $config['max_size']     = '102400';
                 $config['upload_path'] = './assets/files/lap_harian/';
                 $this->load->library('upload', $config);
                 if ($this->upload->do_upload('file')) {
-                    $old_file = $data['id']['file_upload'];
-                    if ($old_file != 'default.docx') {
-                        unlink(FCPATH . 'assets/files/lap_harian/' . $old_file);
-                    }
                     $new_file = $this->upload->data('file_name');
                     $data = array(
                         'id_user' => $this->input->post('id_user'),
@@ -178,7 +175,7 @@ class User extends CI_Controller
                     $this->session->set_flashdata('message', 'Upload data');
                     redirect('user/lap_harian');
                 } else {
-                    $this->session->set_flashdata('msg', 'Ekstensi File Salah / Ukuran file tidak boleh dari 10 MB');
+                    $this->session->set_flashdata('msg', 'Ekstensi File Salah / Ukuran file tidak boleh dari 100 MB');
                     redirect('user/lap_harian');
                 }
             } else {
@@ -205,18 +202,19 @@ class User extends CI_Controller
             $upload_file = $_FILES['file']['name'];
             if ($upload_file) {
                 $config['allowed_types'] = 'xls|xlsx|doc|docx|ppt|pptx|pdf|zip|rar';
-                $config['max_size']     = '51200';
+                $config['max_size']     = '102400';
                 $config['upload_path'] = './assets/files/lap_harian/';
                 $this->load->library('upload', $config);
                 if ($this->upload->do_upload('file')) {
-                    $old_file = $data['lap_harian']['file_upload'];
+                    $old_record = $this->db->get_where('lap_harian', ['id' => $id])->row_array();
+                    $old_file = $old_record['file_upload'];
                     if ($old_file != 'default.docx') {
                         unlink(FCPATH . 'assets/files/lap_harian/' . $old_file);
                     }
                     $new_file = $this->upload->data('file_name');
                     $this->db->set('file_upload', $new_file);
                 } else {
-                    $this->session->set_flashdata('msg', 'Ekstensi File Salah / Ukuran file tidak boleh dari 10 MB');
+                    $this->session->set_flashdata('msg', 'Ekstensi File Salah / Ukuran file tidak boleh dari 100 MB');
                     redirect('user/edit_lap_harian/' . $id);
                 }
             }
@@ -275,14 +273,10 @@ class User extends CI_Controller
             $upload_file = $_FILES['file']['name'];
             if ($upload_file) {
                 $config['allowed_types'] = 'xls|xlsx|doc|docx|ppt|pptx|pdf|zip|rar';
-                $config['max_size']     = '51200';
+                $config['max_size']     = '102400';
                 $config['upload_path'] = './assets/files/lap_bulanan/';
                 $this->load->library('upload', $config);
                 if ($this->upload->do_upload('file')) {
-                    $old_file = $data['id']['file'];
-                    if ($old_file != 'default.docx') {
-                        unlink(FCPATH . 'assets/files/lap_bulanan/' . $old_file);
-                    }
                     $new_file = $this->upload->data('file_name');
                     $data = array(
                         'id_user' => $this->input->post('id_user'),
@@ -295,7 +289,7 @@ class User extends CI_Controller
                     $this->session->set_flashdata('message', 'Upload data');
                     redirect('user/lap_bulanan');
                 } else {
-                    $this->session->set_flashdata('msg', 'Ekstensi File Salah / Ukuran file tidak boleh dari 10 MB');
+                    $this->session->set_flashdata('msg', 'Ekstensi File Salah / Ukuran file tidak boleh dari 100 MB');
                     redirect('user/lap_bulanan');
                 }
             } else {
@@ -322,18 +316,19 @@ class User extends CI_Controller
             $upload_file = $_FILES['file']['name'];
             if ($upload_file) {
                 $config['allowed_types'] = 'xls|xlsx|doc|docx|ppt|pptx|pdf|zip|rar';
-                $config['max_size']     = '51200';
+                $config['max_size']     = '102400';
                 $config['upload_path'] = './assets/files/lap_bulanan/';
                 $this->load->library('upload', $config);
                 if ($this->upload->do_upload('file')) {
-                    $old_file = $data['lap_bulanan']['file_upload'];
+                    $old_record = $this->db->get_where('lap_bulanan', ['id' => $id])->row_array();
+                    $old_file = $old_record['file_upload'];
                     if ($old_file != 'default.docx') {
                         unlink(FCPATH . 'assets/files/lap_bulanan/' . $old_file);
                     }
                     $new_file = $this->upload->data('file_name');
                     $this->db->set('file_upload', $new_file);
                 } else {
-                    $this->session->set_flashdata('msg', 'Ekstensi File Salah / Ukuran file tidak boleh dari 10 MB');
+                    $this->session->set_flashdata('msg', 'Ekstensi File Salah / Ukuran file tidak boleh dari 100 MB');
                     redirect('user/edit_lap_bulanan/' . $id);
                 }
             }
@@ -394,14 +389,10 @@ class User extends CI_Controller
             $upload_file = $_FILES['file']['name'];
             if ($upload_file) {
                 $config['allowed_types'] = 'xls|xlsx|doc|docx|ppt|pptx|pdf|zip|rar';
-                $config['max_size']     = '51200';
+                $config['max_size']     = '102400';
                 $config['upload_path'] = './assets/files/lap_tahunan/';
                 $this->load->library('upload', $config);
                 if ($this->upload->do_upload('file')) {
-                    $old_file = $data['id']['file'];
-                    if ($old_file != 'default.docx') {
-                        unlink(FCPATH . 'assets/files/lap_tahunan/' . $old_file);
-                    }
                     $new_file = $this->upload->data('file_name');
                     $data = array(
                         'id_user' => $this->input->post('id_user'),
@@ -414,7 +405,7 @@ class User extends CI_Controller
                     $this->session->set_flashdata('message', 'Upload data');
                     redirect('user/lap_tahunan');
                 } else {
-                    $this->session->set_flashdata('msg', 'Ekstensi File Salah / Ukuran file tidak boleh dari 10 MB');
+                    $this->session->set_flashdata('msg', 'Ekstensi File Salah / Ukuran file tidak boleh dari 100 MB');
                     redirect('user/lap_tahunan');
                 }
             } else {
@@ -441,18 +432,19 @@ class User extends CI_Controller
             $upload_file = $_FILES['file']['name'];
             if ($upload_file) {
                 $config['allowed_types'] = 'xls|xlsx|doc|docx|ppt|pptx|pdf|zip|rar';
-                $config['max_size']     = '51200';
+                $config['max_size']     = '102400';
                 $config['upload_path'] = './assets/files/lap_tahunan/';
                 $this->load->library('upload', $config);
                 if ($this->upload->do_upload('file')) {
-                    $old_file = $data['lap_tahunan']['file_upload'];
+                    $old_record = $this->db->get_where('lap_tahunan', ['id' => $id])->row_array();
+                    $old_file = $old_record['file_upload'];
                     if ($old_file != 'default.docx') {
                         unlink(FCPATH . 'assets/files/lap_tahunan/' . $old_file);
                     }
                     $new_file = $this->upload->data('file_name');
                     $this->db->set('file_upload', $new_file);
                 } else {
-                    $this->session->set_flashdata('msg', 'Ekstensi File Salah / Ukuran file tidak boleh dari 10 MB');
+                    $this->session->set_flashdata('msg', 'Ekstensi File Salah / Ukuran file tidak boleh dari 100 MB');
                     redirect('user/edit_lap_tahunan/' . $id);
                 }
             }
@@ -512,14 +504,10 @@ class User extends CI_Controller
             $upload_file = $_FILES['file']['name'];
             if ($upload_file) {
                 $config['allowed_types'] = 'xls|xlsx|doc|docx|ppt|pptx|pdf|zip|rar';
-                $config['max_size']     = '51200';
+                $config['max_size']     = '102400';
                 $config['upload_path'] = './assets/files/lap_lain/';
                 $this->load->library('upload', $config);
                 if ($this->upload->do_upload('file')) {
-                    $old_file = $data['id']['file'];
-                    if ($old_file != 'default.docx') {
-                        unlink(FCPATH . 'assets/files/lap_lain/' . $old_file);
-                    }
                     $new_file = $this->upload->data('file_name');
                     $data = array(
                         'id_user' => $this->input->post('id_user'),
@@ -532,7 +520,7 @@ class User extends CI_Controller
                     $this->session->set_flashdata('message', 'Upload data');
                     redirect('user/lap_lain');
                 } else {
-                    $this->session->set_flashdata('msg', 'Ekstensi File Salah / Ukuran file tidak boleh dari 10 MB');
+                    $this->session->set_flashdata('msg', 'Ekstensi File Salah / Ukuran file tidak boleh dari 100 MB');
                     redirect('user/lap_lain');
                 }
             } else {
@@ -559,18 +547,19 @@ class User extends CI_Controller
             $upload_file = $_FILES['file']['name'];
             if ($upload_file) {
                 $config['allowed_types'] = 'xls|xlsx|doc|docx|ppt|pptx|pdf|zip|rar';
-                $config['max_size']     = '51200';
+                $config['max_size']     = '102400';
                 $config['upload_path'] = './assets/files/lap_lain/';
                 $this->load->library('upload', $config);
                 if ($this->upload->do_upload('file')) {
-                    $old_file = $data['lap_lain']['file_upload'];
+                    $old_record = $this->db->get_where('lap_lain', ['id' => $id])->row_array();
+                    $old_file = $old_record['file_upload'];
                     if ($old_file != 'default.docx') {
                         unlink(FCPATH . 'assets/files/lap_lain/' . $old_file);
                     }
                     $new_file = $this->upload->data('file_name');
                     $this->db->set('file_upload', $new_file);
                 } else {
-                    $this->session->set_flashdata('msg', 'Ekstensi File Salah / Ukuran file tidak boleh dari 10 MB');
+                    $this->session->set_flashdata('msg', 'Ekstensi File Salah / Ukuran file tidak boleh dari 100 MB');
                     redirect('user/edit_lap_lain/' . $id);
                 }
             }
@@ -630,14 +619,10 @@ class User extends CI_Controller
             $upload_file = $_FILES['file']['name'];
             if ($upload_file) {
                 $config['allowed_types'] = 'xls|xlsx|doc|docx|ppt|pptx|pdf|zip|rar|txt';
-                $config['max_size']     = '51200';
+                $config['max_size']     = '102400';
                 $config['upload_path'] = './assets/files/dok_kerja/';
                 $this->load->library('upload', $config);
                 if ($this->upload->do_upload('file')) {
-                    $old_file = $data['id']['file_upload'];
-                    if ($old_file != 'default.docx') {
-                        unlink(FCPATH . 'assets/files/dok_kerja/' . $old_file);
-                    }
                     $new_file = $this->upload->data('file_name');
                     $data = array(
                         'id_user' => $this->input->post('id_user'),
@@ -650,7 +635,7 @@ class User extends CI_Controller
                     $this->session->set_flashdata('message', 'Upload data');
                     redirect('user/dok_kerja');
                 } else {
-                    $this->session->set_flashdata('msg', 'Ekstensi File Salah / Ukuran file tidak boleh dari 10 MB');
+                    $this->session->set_flashdata('msg', 'Ekstensi File Salah / Ukuran file tidak boleh dari 100 MB');
                     redirect('user/dok_kerja');
                 }
             } else {
@@ -677,18 +662,19 @@ class User extends CI_Controller
             $upload_file = $_FILES['file']['name'];
             if ($upload_file) {
                 $config['allowed_types'] = 'xls|xlsx|doc|docx|ppt|pptx|pdf|zip|rar';
-                $config['max_size']     = '51200';
+                $config['max_size']     = '102400';
                 $config['upload_path'] = './assets/files/dok_kerja/';
                 $this->load->library('upload', $config);
                 if ($this->upload->do_upload('file')) {
-                    $old_file = $data['dok_kerja']['file_upload'];
+                    $old_record = $this->db->get_where('dok_kerja', ['id' => $id])->row_array();
+                    $old_file = $old_record['file_upload'];
                     if ($old_file != 'default.docx') {
                         unlink(FCPATH . 'assets/files/dok_kerja/' . $old_file);
                     }
                     $new_file = $this->upload->data('file_name');
                     $this->db->set('file_upload', $new_file);
                 } else {
-                    $this->session->set_flashdata('msg', 'Ekstensi File Salah / Ukuran file tidak boleh dari 10 MB');
+                    $this->session->set_flashdata('msg', 'Ekstensi File Salah / Ukuran file tidak boleh dari 100 MB');
                     redirect('user/edit_dok_kerja/' . $id);
                 }
             }
@@ -748,14 +734,10 @@ class User extends CI_Controller
             $upload_file = $_FILES['file']['name'];
             if ($upload_file) {
                 $config['allowed_types'] = 'xls|xlsx|doc|docx|ppt|pptx|pdf|zip|rar|txt';
-                $config['max_size']     = '51200';
+                $config['max_size']     = '102400';
                 $config['upload_path'] = './assets/files/dok_pribadi/';
                 $this->load->library('upload', $config);
                 if ($this->upload->do_upload('file')) {
-                    $old_file = $data['id']['file_upload'];
-                    if ($old_file != 'default.docx') {
-                        unlink(FCPATH . 'assets/files/dok_pribadi/' . $old_file);
-                    }
                     $new_file = $this->upload->data('file_name');
                     $data = array(
                         'id_user' => $this->input->post('id_user'),
@@ -768,7 +750,7 @@ class User extends CI_Controller
                     $this->session->set_flashdata('message', 'Upload data');
                     redirect('user/dok_pribadi');
                 } else {
-                    $this->session->set_flashdata('msg', 'Ekstensi File Salah / Ukuran file tidak boleh dari 10 MB');
+                    $this->session->set_flashdata('msg', 'Ekstensi File Salah / Ukuran file tidak boleh dari 100 MB');
                     redirect('user/dok_pribadi');
                 }
             } else {
@@ -795,18 +777,19 @@ class User extends CI_Controller
             $upload_file = $_FILES['file']['name'];
             if ($upload_file) {
                 $config['allowed_types'] = 'xls|xlsx|doc|docx|ppt|pptx|pdf|zip|rar';
-                $config['max_size']     = '51200';
+                $config['max_size']     = '102400';
                 $config['upload_path'] = './assets/files/dok_pribadi/';
                 $this->load->library('upload', $config);
                 if ($this->upload->do_upload('file')) {
-                    $old_file = $data['dok_pribadi']['file_upload'];
+                    $old_record = $this->db->get_where('dok_pribadi', ['id' => $id])->row_array();
+                    $old_file = $old_record['file_upload'];
                     if ($old_file != 'default.docx') {
                         unlink(FCPATH . 'assets/files/dok_pribadi/' . $old_file);
                     }
                     $new_file = $this->upload->data('file_name');
                     $this->db->set('file_upload', $new_file);
                 } else {
-                    $this->session->set_flashdata('msg', 'Ekstensi File Salah / Ukuran file tidak boleh dari 10 MB');
+                    $this->session->set_flashdata('msg', 'Ekstensi File Salah / Ukuran file tidak boleh dari 100 MB');
                     redirect('user/edit_dok_pribadi/' . $id);
                 }
             }
@@ -866,7 +849,7 @@ class User extends CI_Controller
             $upload_file = $_FILES['file']['name'];
             if ($upload_file) {
                 $config['allowed_types'] = 'png|jpg|jpeg|pdf|bmp|zip|rar';
-                $config['max_size']     = '51200';
+                $config['max_size']     = '102400';
                 $config['upload_path'] = './assets/files/scan_utama/';
                 $this->load->library('upload', $config);
                 if ($this->upload->do_upload('file')) {
@@ -886,7 +869,7 @@ class User extends CI_Controller
                     $this->session->set_flashdata('message', 'Upload data');
                     redirect('user/scan_berkas_utama');
                 } else {
-                    $this->session->set_flashdata('msg', 'Ekstensi File Salah / Ukuran file tidak boleh dari 10 MB');
+                    $this->session->set_flashdata('msg', 'Ekstensi File Salah / Ukuran file tidak boleh dari 100 MB');
                     redirect('user/scan_berkas_utama');
                 }
             } else {
@@ -913,18 +896,19 @@ class User extends CI_Controller
             $upload_file = $_FILES['file']['name'];
             if ($upload_file) {
                 $config['allowed_types'] = 'png|jpg|jpeg|pdf|bmp|zip|rar';
-                $config['max_size']     = '51200';
+                $config['max_size']     = '102400';
                 $config['upload_path'] = './assets/files/scan_utama/';
                 $this->load->library('upload', $config);
                 if ($this->upload->do_upload('file')) {
-                    $old_file = $data['scan_utama']['file_upload'];
+                    $old_record = $this->db->get_where('scan_utama', ['id' => $id])->row_array();
+                    $old_file = $old_record['file_upload'];
                     if ($old_file != 'default.jpg') {
                         unlink(FCPATH . 'assets/files/scan_utama/' . $old_file);
                     }
                     $new_file = $this->upload->data('file_name');
                     $this->db->set('file_upload', $new_file);
                 } else {
-                    $this->session->set_flashdata('msg', 'Ekstensi File Salah / Ukuran file tidak boleh dari 10 MB');
+                    $this->session->set_flashdata('msg', 'Ekstensi File Salah / Ukuran file tidak boleh dari 100 MB');
                     redirect('user/edit_scan_utama/' . $id);
                 }
             }
@@ -984,7 +968,7 @@ class User extends CI_Controller
             $upload_file = $_FILES['file']['name'];
             if ($upload_file) {
                 $config['allowed_types'] = 'jpg|png|jpeg|pdf|bmp|zip|rar';
-                $config['max_size']     = '51200';
+                $config['max_size']     = '102400';
                 $config['upload_path'] = './assets/files/scan_pendukung/';
                 $this->load->library('upload', $config);
                 if ($this->upload->do_upload('file')) {
@@ -1004,7 +988,7 @@ class User extends CI_Controller
                     $this->session->set_flashdata('message', 'Upload data');
                     redirect('user/scan_berkas_pendukung');
                 } else {
-                    $this->session->set_flashdata('msg', 'Ekstensi File Salah / Ukuran file tidak boleh dari 10 MB');
+                    $this->session->set_flashdata('msg', 'Ekstensi File Salah / Ukuran file tidak boleh dari 100 MB');
                     redirect('user/scan_berkas_pendukung');
                 }
             } else {
@@ -1031,18 +1015,19 @@ class User extends CI_Controller
             $upload_file = $_FILES['file']['name'];
             if ($upload_file) {
                 $config['allowed_types'] = 'png|jpg|jpeg|pdf|bmp|zip|rar';
-                $config['max_size']     = '51200';
+                $config['max_size']     = '102400';
                 $config['upload_path'] = './assets/files/scan_pendukung/';
                 $this->load->library('upload', $config);
                 if ($this->upload->do_upload('file')) {
-                    $old_file = $data['scan_pendukung']['file_upload'];
+                    $old_record = $this->db->get_where('scan_pendukung', ['id' => $id])->row_array();
+                    $old_file = $old_record['file_upload'];
                     if ($old_file != 'default.jpg') {
                         unlink(FCPATH . 'assets/files/scan_pendukung/' . $old_file);
                     }
                     $new_file = $this->upload->data('file_name');
                     $this->db->set('file_upload', $new_file);
                 } else {
-                    $this->session->set_flashdata('msg', 'Ekstensi File Salah / Ukuran file tidak boleh dari 10 MB');
+                    $this->session->set_flashdata('msg', 'Ekstensi File Salah / Ukuran file tidak boleh dari 100 MB');
                     redirect('user/edit_scan_pendukung/' . $id);
                 }
             }

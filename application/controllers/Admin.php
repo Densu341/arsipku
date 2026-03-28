@@ -61,7 +61,8 @@ class Admin extends CI_Controller
                 $config['upload_path'] = './assets/img/profile';
                 $this->load->library('upload', $config);
                 if ($this->upload->do_upload('image')) {
-                    $old_image = $data['id']['image'];
+                    $user = $this->db->get_where('mst_user', ['username' => $this->session->userdata('username')])->row_array();
+                    $old_image = $user['image'];
                     if ($old_image != 'default.jpg') {
                         unlink(FCPATH . 'assets/img/profile/' . $old_image);
                     }
