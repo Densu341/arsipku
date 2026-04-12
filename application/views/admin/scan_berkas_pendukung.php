@@ -99,7 +99,7 @@
         Swal.fire({
             title: 'Konfirmasi Hapus',
             text: 'data akan dihapus',
-            type: 'warning',
+            icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',

@@ -46,7 +46,7 @@
         Swal.fire({
             title: 'Konfirmasi Logout',
             text: 'Klik logout untuk mengakhiri session',
-            type: 'warning',
+            icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',

@@ -69,7 +69,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title" style="font-weight:800;">Laporan Tahunan</h3>
+                <h3 class="modal-title" style="font-weight:800;">Upload Hasil Evaluasi SKP dan LKD</h3>
             </div>
             <div class="modal-body">
                 <?php echo form_open_multipart('user/lap_tahunan'); ?>
@@ -90,7 +90,7 @@
             </div>
             <div class="modal-footer">
                 <div class="pull-left text-muted">* Ekstensi File xls, xlsx, doc, docx, ppt, pptx, pdf, zip, rar</div><br>
-                <div class="pull-left text-muted">* Ukuran File Kurang dari 10 MB</div>
+                <div class="pull-left text-muted">* Ukuran File Maksimal 100 MB</div>
             </div>
         </div>
         <!-- /.modal-content -->
@@ -105,7 +105,7 @@
         Swal.fire({
             title: 'Konfirmasi Hapus',
             text: 'data akan dihapus',
-            type: 'warning',
+            icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',

@@ -215,7 +215,7 @@ class Admin extends CI_Controller
 
     public function lap_harian()
     {
-        $data['title'] = 'Laporan Harian';
+        $data['title'] = 'Publikasi Dosen';
         $data['user'] = $this->db->get_where('mst_user', ['username' => $this->session->userdata('username')])->row_array();
         $data['lap_harian_saya'] = $this->admin->getLapHarian();
 
@@ -238,7 +238,7 @@ class Admin extends CI_Controller
 
     public function lap_bulanan()
     {
-        $data['title'] = 'Laporan Bulanan';
+        $data['title'] = 'SK dan Surat Tugas';
         $data['user'] = $this->db->get_where('mst_user', ['username' => $this->session->userdata('username')])->row_array();
         $data['lap_bulanan_saya'] = $this->admin->getLapBulanan();
 
@@ -261,7 +261,7 @@ class Admin extends CI_Controller
 
     public function lap_tahunan()
     {
-        $data['title'] = 'Laporan Tahunan';
+        $data['title'] = 'Hasil Evaluasi SKP dan LKD';
         $data['user'] = $this->db->get_where('mst_user', ['username' => $this->session->userdata('username')])->row_array();
         $data['lap_tahunan_saya'] = $this->admin->getLapTahunan();
 
@@ -284,7 +284,7 @@ class Admin extends CI_Controller
 
     public function lap_lain()
     {
-        $data['title'] = 'Laporan Lain-Lain';
+        $data['title'] = 'Laporan Penelitian dan Pengabdian';
         $data['user'] = $this->db->get_where('mst_user', ['username' => $this->session->userdata('username')])->row_array();
         $data['lap_lain_saya'] = $this->admin->getLapLain();
 
@@ -307,7 +307,7 @@ class Admin extends CI_Controller
 
     public function dok_kerja()
     {
-        $data['title'] = 'Dokumen Kerja';
+        $data['title'] = 'Buku';
         $data['user'] = $this->db->get_where('mst_user', ['username' => $this->session->userdata('username')])->row_array();
         $data['dok_kerja_saya'] = $this->admin->getDokKerja();
 
@@ -330,7 +330,7 @@ class Admin extends CI_Controller
 
     public function dok_pribadi()
     {
-        $data['title'] = 'Dokumen Pribadi';
+        $data['title'] = 'Sertifikat Penunjang Kompetensi';
         $data['user'] = $this->db->get_where('mst_user', ['username' => $this->session->userdata('username')])->row_array();
         $data['dok_pribadi_saya'] = $this->admin->getDokPribadi();
 
@@ -353,7 +353,7 @@ class Admin extends CI_Controller
 
     public function scan_berkas_utama()
     {
-        $data['title'] = 'Scan Berkas Utama';
+        $data['title'] = 'SKP';
         $data['user'] = $this->db->get_where('mst_user', ['username' => $this->session->userdata('username')])->row_array();
         $data['scan_utama_saya'] = $this->admin->getScanUtama();
 
@@ -376,7 +376,7 @@ class Admin extends CI_Controller
 
     public function scan_berkas_pendukung()
     {
-        $data['title'] = 'Scan Berkas Pendukung';
+        $data['title'] = 'Kerjasama';
         $data['user'] = $this->db->get_where('mst_user', ['username' => $this->session->userdata('username')])->row_array();
         $data['scan_pendukung_saya'] = $this->admin->getScanPendukung();
 

@@ -1,3 +1,8 @@
+<style>
+    .sidebar-menu li a {
+        white-space: normal !important;
+    }
+</style>
 <!-- Left side column. contains the sidebar -->
 <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
@@ -15,7 +20,7 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">ADMINISTRATOR</li>
-            <li><a href="<?php echo base_url('admin/index'); ?>"><i class="fa fa-home"></i> <span>Beranda</span></a></li>
+            <li><a href="<?php echo base_url('admin/index'); ?>"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
             <li><a href="<?php echo base_url('admin/profile'); ?>"><i class="fa fa-user"></i> <span>Profile</span></a></li>
 
             <li><a href="<?php echo base_url('admin/man_user'); ?>"><i class="fa fa-users"></i> <span>Management User</span></a></li>
@@ -30,10 +35,10 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="<?php echo base_url('admin/lap_harian'); ?>"><i class="fa fa-circle-o"></i> Laporan Harian</a></li>
-                    <li><a href="<?php echo base_url('admin/lap_bulanan'); ?>"><i class="fa fa-circle-o"></i> Laporan Bulanan</a></li>
-                    <li><a href="<?php echo base_url('admin/lap_tahunan'); ?>"><i class="fa fa-circle-o"></i> Laporan Tahunan</a></li>
-                    <li><a href="<?php echo base_url('admin/lap_lain'); ?>"><i class="fa fa-circle-o"></i> Laporan Lain-lain</a></li>
+                    <li><a href="<?php echo base_url('admin/lap_harian'); ?>"><i class="fa fa-circle-o"></i> Publikasi Dosen</a></li>
+                    <li><a href="<?php echo base_url('admin/lap_bulanan'); ?>"><i class="fa fa-circle-o"></i> SK dan Surat Tugas</a></li>
+                    <li><a href="<?php echo base_url('admin/lap_tahunan'); ?>"><i class="fa fa-circle-o"></i> Hasil Evaluasi SKP dan LKD</a></li>
+                    <li><a href="<?php echo base_url('admin/lap_lain'); ?>"><i class="fa fa-circle-o"></i> Laporan Penelitian dan Pengabdian</a></li>
                 </ul>
             </li>
             <li class="treeview">
@@ -45,21 +50,21 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="<?php echo base_url('admin/dok_kerja'); ?>"><i class="fa fa-circle-o"></i> Dokumen Kerja</a></li>
-                    <li><a href="<?php echo base_url('admin/dok_pribadi'); ?>"><i class="fa fa-circle-o"></i> Dokumen Pribadi</a></li>
+                    <li><a href="<?php echo base_url('admin/dok_kerja'); ?>"><i class="fa fa-circle-o"></i> Buku</a></li>
+                    <li><a href="<?php echo base_url('admin/dok_pribadi'); ?>"><i class="fa fa-circle-o"></i> Sertifikat Penunjang Kompetensi</a></li>
                 </ul>
             </li>
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-picture-o"></i>
-                    <span>File Scanner</span>
+                    <span>Dokumen Lain-lain</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="<?php echo base_url('admin/scan_berkas_utama'); ?>"><i class="fa fa-circle-o"></i> Scan Berkas Utama</a></li>
-                    <li><a href="<?php echo base_url('admin/scan_berkas_pendukung'); ?>"><i class="fa fa-circle-o"></i> Scan Berkas Pendukung</a></li>
+                    <li><a href="<?php echo base_url('admin/scan_berkas_utama'); ?>"><i class="fa fa-circle-o"></i> SKP</a></li>
+                    <li><a href="<?php echo base_url('admin/scan_berkas_pendukung'); ?>"><i class="fa fa-circle-o"></i> Kerjasama</a></li>
                 </ul>
             </li>
             <li class="header">END</li>

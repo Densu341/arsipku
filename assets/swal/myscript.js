@@ -4,7 +4,7 @@ if (flashData && String(flashData).trim().length > 0) {
 	Swal.fire({
 		title: String(flashData).trim() + ' sukses',
 		text: '',
-		type: 'success'
+		icon: 'success'
 	});
 }
 
@@ -14,6 +14,6 @@ if (flashDataError && String(flashDataError).trim().length > 0) {
 	Swal.fire({
 		title: 'Gagal!',
 		text: String(flashDataError).trim(),
-		type: 'error'
+		icon: 'error'
 	});
 }

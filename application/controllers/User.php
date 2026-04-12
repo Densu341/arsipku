@@ -147,7 +147,7 @@ class User extends CI_Controller
 
         if ($this->form_validation->run() == false) {
 
-            $data['title'] = 'Laporan Harian';
+            $data['title'] = 'Publikasi Dosen';
             $data['user'] = $this->db->get_where('mst_user', ['username' => $this->session->userdata('username')])->row_array();
             $data['lap_harian_saya'] = $this->get_laporan->getLapHarian();
 
@@ -190,7 +190,7 @@ class User extends CI_Controller
         $this->form_validation->set_rules('id', 'ID', 'required|trim');
 
         if ($this->form_validation->run() == FALSE) {
-            $data['title'] = 'Edit Laporan Harian';
+            $data['title'] = 'Edit Publikasi Dosen';
             $data['user'] = $this->db->get_where('mst_user', ['username' => $this->session->userdata('username')])->row_array();
             $data['lap_harian'] = $this->db->get_where('lap_harian', ['id' => $id])->row_array();
 
@@ -261,7 +261,7 @@ class User extends CI_Controller
         $this->form_validation->set_rules('id_user', 'ID', 'required|trim');
 
         if ($this->form_validation->run() == false) {
-            $data['title'] = 'Laporan Bulanan';
+            $data['title'] = 'SK dan Surat Tugas';
             $data['user'] = $this->db->get_where('mst_user', ['username' => $this->session->userdata('username')])->row_array();
             $data['lap_bulanan_saya'] = $this->get_laporan->getLapBulanan();
 
@@ -304,7 +304,7 @@ class User extends CI_Controller
         $this->form_validation->set_rules('id', 'ID', 'required|trim');
 
         if ($this->form_validation->run() == FALSE) {
-            $data['title'] = 'Edit Laporan Bulanan';
+            $data['title'] = 'Edit SK dan Surat Tugas';
             $data['user'] = $this->db->get_where('mst_user', ['username' => $this->session->userdata('username')])->row_array();
             $data['lap_bulanan'] = $this->db->get_where('lap_bulanan', ['id' => $id])->row_array();
 
@@ -377,7 +377,7 @@ class User extends CI_Controller
 
         if ($this->form_validation->run() == false) {
 
-            $data['title'] = 'Laporan Tahunan';
+            $data['title'] = 'Hasil Evaluasi SKP dan LKD';
             $data['user'] = $this->db->get_where('mst_user', ['username' => $this->session->userdata('username')])->row_array();
             $data['lap_tahunan_saya'] = $this->get_laporan->getLapTahunan();
 
@@ -420,7 +420,7 @@ class User extends CI_Controller
         $this->form_validation->set_rules('id', 'ID', 'required|trim');
 
         if ($this->form_validation->run() == FALSE) {
-            $data['title'] = 'Edit Laporan Tahunan';
+            $data['title'] = 'Edit Hasil Evaluasi SKP dan LKD';
             $data['user'] = $this->db->get_where('mst_user', ['username' => $this->session->userdata('username')])->row_array();
             $data['lap_tahunan'] = $this->db->get_where('lap_tahunan', ['id' => $id])->row_array();
 
@@ -492,7 +492,7 @@ class User extends CI_Controller
 
         if ($this->form_validation->run() == false) {
 
-            $data['title'] = 'Laporan Lain';
+            $data['title'] = 'Laporan Penelitian dan Pengabdian';
             $data['user'] = $this->db->get_where('mst_user', ['username' => $this->session->userdata('username')])->row_array();
             $data['lap_lain_saya'] = $this->get_laporan->getLaplain();
 
@@ -535,7 +535,7 @@ class User extends CI_Controller
         $this->form_validation->set_rules('id', 'ID', 'required|trim');
 
         if ($this->form_validation->run() == FALSE) {
-            $data['title'] = 'Edit Laporan Lain';
+            $data['title'] = 'Edit Laporan Penelitian dan Pengabdian';
             $data['user'] = $this->db->get_where('mst_user', ['username' => $this->session->userdata('username')])->row_array();
             $data['lap_lain'] = $this->db->get_where('lap_lain', ['id' => $id])->row_array();
 
@@ -607,7 +607,7 @@ class User extends CI_Controller
 
         if ($this->form_validation->run() == false) {
 
-            $data['title'] = 'Dokumen Kerja';
+            $data['title'] = 'Buku';
             $data['user'] = $this->db->get_where('mst_user', ['username' => $this->session->userdata('username')])->row_array();
             $data['dok_kerja_saya'] = $this->get_laporan->getDokKerja();
 
@@ -650,7 +650,7 @@ class User extends CI_Controller
         $this->form_validation->set_rules('id', 'ID', 'required|trim');
 
         if ($this->form_validation->run() == FALSE) {
-            $data['title'] = 'Edit Dokumen Kerja';
+            $data['title'] = 'Edit Buku';
             $data['user'] = $this->db->get_where('mst_user', ['username' => $this->session->userdata('username')])->row_array();
             $data['dok_kerja'] = $this->db->get_where('dok_kerja', ['id' => $id])->row_array();
 
@@ -722,7 +722,7 @@ class User extends CI_Controller
 
         if ($this->form_validation->run() == false) {
 
-            $data['title'] = 'Dokumen Pribadi';
+            $data['title'] = 'Sertifikat Penunjang Kompetensi';
             $data['user'] = $this->db->get_where('mst_user', ['username' => $this->session->userdata('username')])->row_array();
             $data['dok_pribadi_saya'] = $this->get_laporan->getDokPribadi();
 
@@ -765,7 +765,7 @@ class User extends CI_Controller
         $this->form_validation->set_rules('id', 'ID', 'required|trim');
 
         if ($this->form_validation->run() == FALSE) {
-            $data['title'] = 'Edit Dokumen Pribadi';
+            $data['title'] = 'Edit Sertifikat Penunjang Kompetensi';
             $data['user'] = $this->db->get_where('mst_user', ['username' => $this->session->userdata('username')])->row_array();
             $data['dok_pribadi'] = $this->db->get_where('dok_pribadi', ['id' => $id])->row_array();
 
@@ -837,7 +837,7 @@ class User extends CI_Controller
 
         if ($this->form_validation->run() == false) {
 
-            $data['title'] = 'Scan Berkas Utama';
+            $data['title'] = 'SKP';
             $data['user'] = $this->db->get_where('mst_user', ['username' => $this->session->userdata('username')])->row_array();
             $data['scan_utama_saya'] = $this->get_laporan->getScanUtama();
 
@@ -853,10 +853,6 @@ class User extends CI_Controller
                 $config['upload_path'] = './assets/files/scan_utama/';
                 $this->load->library('upload', $config);
                 if ($this->upload->do_upload('file')) {
-                    $old_file = $data['id']['file_upload'];
-                    if ($old_file != 'default.jpg') {
-                        unlink(FCPATH . 'assets/files/scan_utama/' . $old_file);
-                    }
                     $new_file = $this->upload->data('file_name');
                     $data = array(
                         'id_user' => $this->input->post('id_user'),
@@ -884,7 +880,7 @@ class User extends CI_Controller
         $this->form_validation->set_rules('id', 'ID', 'required|trim');
 
         if ($this->form_validation->run() == FALSE) {
-            $data['title'] = 'Edit Scan Berkas Utama';
+            $data['title'] = 'Edit SKP';
             $data['user'] = $this->db->get_where('mst_user', ['username' => $this->session->userdata('username')])->row_array();
             $data['scan_utama'] = $this->db->get_where('scan_utama', ['id' => $id])->row_array();
 
@@ -956,7 +952,7 @@ class User extends CI_Controller
 
         if ($this->form_validation->run() == false) {
 
-            $data['title'] = 'Scan Berkas Pendukung';
+            $data['title'] = 'Kerjasama';
             $data['user'] = $this->db->get_where('mst_user', ['username' => $this->session->userdata('username')])->row_array();
             $data['scan_pendukung_saya'] = $this->get_laporan->getScanPendukung();
 
@@ -972,10 +968,6 @@ class User extends CI_Controller
                 $config['upload_path'] = './assets/files/scan_pendukung/';
                 $this->load->library('upload', $config);
                 if ($this->upload->do_upload('file')) {
-                    $old_file = $data['id']['file_upload'];
-                    if ($old_file != 'default.jpg') {
-                        unlink(FCPATH . 'assets/files/scan_pendukung/' . $old_file);
-                    }
                     $new_file = $this->upload->data('file_name');
                     $data = array(
                         'id_user' => $this->input->post('id_user'),
@@ -1003,7 +995,7 @@ class User extends CI_Controller
         $this->form_validation->set_rules('id', 'ID', 'required|trim');
 
         if ($this->form_validation->run() == FALSE) {
-            $data['title'] = 'Edit Scan Berkas Pendukung';
+            $data['title'] = 'Edit Kerjasama';
             $data['user'] = $this->db->get_where('mst_user', ['username' => $this->session->userdata('username')])->row_array();
             $data['scan_pendukung'] = $this->db->get_where('scan_pendukung', ['id' => $id])->row_array();
 

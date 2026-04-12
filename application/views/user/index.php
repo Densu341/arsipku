@@ -12,7 +12,7 @@
         <div class="info-box bg-aqua">
           <span class="info-box-icon"><i class="fa fa-book"></i></span>
           <div class="info-box-content">
-            <span class="info-box-text">Laporan Harian</span>
+            <span class="info-box-text">Publikasi Dosen</span>
             <span class="info-box-number"><?php echo $data_harian; ?> Files</span>
             <!-- The progress section is optional -->
             <div class="progress">
@@ -30,7 +30,7 @@
         <div class="info-box bg-red">
           <span class="info-box-icon"><i class="fa fa-calendar-o"></i></span>
           <div class="info-box-content">
-            <span class="info-box-text">Laporan Bulanan</span>
+            <span class="info-box-text">SK dan Surat Tugas</span>
             <span class="info-box-number"><?php echo $data_bulanan; ?> Files</span>
             <!-- The progress section is optional -->
             <div class="progress">
@@ -50,7 +50,7 @@
         <div class="info-box bg-lime">
           <span class="info-box-icon"><i class="fa fa-check-square-o"></i></span>
           <div class="info-box-content">
-            <span class="info-box-text">Laporan Tahunan</span>
+            <span class="info-box-text">Hasil Evaluasi SKP dan LKD</span>
             <span class="info-box-number"><?php echo $data_tahunan; ?> Files</span>
             <!-- The progress section is optional -->
             <div class="progress">
@@ -70,7 +70,7 @@
         <div class="info-box bg-navy">
           <span class="info-box-icon"><i class="fa fa-clone"></i></span>
           <div class="info-box-content">
-            <span class="info-box-text">Laporan Lain</span>
+            <span class="info-box-text">Laporan Penelitian dan Pengabdian</span>
             <span class="info-box-number"><?php echo $data_lain; ?> Files</span>
             <!-- The progress section is optional -->
             <div class="progress">
@@ -89,7 +89,7 @@
         <div class="info-box bg-maroon">
           <span class="info-box-icon"><i class="fa fa-file-archive-o"></i></span>
           <div class="info-box-content">
-            <span class="info-box-text">Dokumen Kerja</span>
+            <span class="info-box-text">Buku</span>
             <span class="info-box-number"><?php echo $dok_kerja; ?> Files</span>
             <!-- The progress section is optional -->
             <div class="progress">
@@ -107,7 +107,7 @@
         <div class="info-box bg-yellow">
           <span class="info-box-icon"><i class="fa fa-folder-open"></i></span>
           <div class="info-box-content">
-            <span class="info-box-text">Dokumen Pribadi</span>
+            <span class="info-box-text">Sertifikat Penunjang Kompetensi</span>
             <span class="info-box-number"><?php echo $dok_pribadi; ?> Files</span>
             <!-- The progress section is optional -->
             <div class="progress">
@@ -127,7 +127,7 @@
         <div class="info-box bg-fuchsia">
           <span class="info-box-icon"><i class="fa fa-inbox"></i></span>
           <div class="info-box-content">
-            <span class="info-box-text">Scan Berkas Utama</span>
+            <span class="info-box-text">SKP</span>
             <span class="info-box-number"><?php echo $scan_utama; ?> Files</span>
             <!-- The progress section is optional -->
             <div class="progress">
@@ -147,7 +147,7 @@
         <div class="info-box bg-gray">
           <span class="info-box-icon"><i class="fa fa-newspaper-o"></i></span>
           <div class="info-box-content">
-            <span class="info-box-text">Scan Berkas Pendukung</span>
+            <span class="info-box-text">Kerjasama</span>
             <span class="info-box-number"><?php echo $scan_pendukung; ?> Files</span>
             <!-- The progress section is optional -->
             <div class="progress">
@@ -163,14 +163,14 @@
 
     <div class="nav-tabs-custom">
       <ul class="nav nav-tabs">
-        <li class="active"><a href="#activity" data-toggle="tab" style="font-weight:800;">Laporan Harian</a></li>
-        <li><a href="#settings" data-toggle="tab" style="font-weight:800;">Laporan Bulanan</a></li>
-        <li><a href="#laptahunan" data-toggle="tab" style="font-weight:800;">Laporan Tahunan</a></li>
-        <li><a href="#laplain" data-toggle="tab" style="font-weight:800;">Laporan Lain</a></li>
-        <li><a href="#dokkerja" data-toggle="tab" style="font-weight:800;">Dokumen Kerja</a></li>
-        <li><a href="#dokpribadi" data-toggle="tab" style="font-weight:800;">Dokumen Pribadi</a></li>
-        <li><a href="#scanutama" data-toggle="tab" style="font-weight:800;">Scan</a></li>
-        <li><a href="#scanpendukung" data-toggle="tab" style="font-weight:800;">Scan Pendukung</a></li>
+        <li class="active"><a href="#activity" data-toggle="tab" style="font-weight:800;">Publikasi Dosen</a></li>
+        <li><a href="#settings" data-toggle="tab" style="font-weight:800;">SK dan Surat Tugas</a></li>
+        <li><a href="#laptahunan" data-toggle="tab" style="font-weight:800;">Hasil Evaluasi SKP dan LKD</a></li>
+        <li><a href="#laplain" data-toggle="tab" style="font-weight:800;">Laporan Penelitian dan Pengabdian</a></li>
+        <li><a href="#dokkerja" data-toggle="tab" style="font-weight:800;">Buku</a></li>
+        <li><a href="#dokpribadi" data-toggle="tab" style="font-weight:800;">Sertifikat Penunjang Kompetensi</a></li>
+        <li><a href="#scanutama" data-toggle="tab" style="font-weight:800;">SKP</a></li>
+        <li><a href="#scanpendukung" data-toggle="tab" style="font-weight:800;">Kerjasama</a></li>
       </ul>
 
       <div class="tab-content">
